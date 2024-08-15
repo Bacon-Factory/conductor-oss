@@ -43,7 +43,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/conductor-oss/conductor
+          repository: conductor-oss/conductor
           ref: ${{ steps.latest-tag.outputs.tag }}
 
 
