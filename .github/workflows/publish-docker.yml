@@ -52,5 +52,5 @@ jobs:
           context: .
           file: docker/server/Dockerfile
           push: true
-          tags: ghcr.io/martinbacon/${{ github.event.repository.name }}:latest,ghcr.io/martinbacon/${{ github.event.repository.name }}:${{ steps.latest-tag.outputs.tag }}
+          tags: ghcr.io/bacon-factory/${{ github.event.repository.name }}:latest,ghcr.io/bacon-factory/${{ github.event.repository.name }}:${{ steps.latest-tag.outputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
