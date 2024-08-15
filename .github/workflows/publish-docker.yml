@@ -40,6 +40,12 @@ jobs:
           repo: https://github.com/conductor-oss/conductor
           tag: '^v3'
 
+      - name: Get tag
+        id: get-tag
+        run: |
+          VERSION=$(echo "${{ steps.latest-tag.outputs.tag }}")
+          echo "VERSION=${VERSION:1}" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -52,5 +58,5 @@ jobs:
           context: .
           file: docker/server/Dockerfile
           push: true
-          tags: ghcr.io/bacon-factory/${{ github.event.repository.name }}:latest,ghcr.io/bacon-factory/${{ github.event.repository.name }}:${{ steps.latest-tag.outputs.tag }}
+          tags: ghcr.io/bacon-factory/${{ github.event.repository.name }}:latest,ghcr.io/bacon-factory/${{ github.event.repository.name }}:${{ steps.latest-tag.outputs.tag }},ghcr.io/bacon-factory/${{ github.event.repository.name }}:${{ env.VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
