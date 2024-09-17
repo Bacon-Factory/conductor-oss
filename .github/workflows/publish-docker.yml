@@ -33,6 +33,8 @@ jobs:
         uses: docker/metadata-action@dbef88086f6cef02e264edb7dbf63250c17cef6c
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/conductor-oss/conductor
 
       - uses: tdemin/find-latest-tag@v1
         id: latest-tag
